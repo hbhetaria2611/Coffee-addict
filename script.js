@@ -552,3 +552,70 @@ document.addEventListener('keypress', (e) => {
         findRecipes();
     }
 });
+
+// Daily Recipe Inspiration
+function getDailyRecipe() {
+    // Use current date as seed for consistent daily recipe
+    const today = new Date();
+    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+
+    // Use day of year to pick a recipe (same recipe all day)
+    const recipeIndex = dayOfYear % coffeeRecipes.length;
+    return coffeeRecipes[recipeIndex];
+}
+
+function displayDailyInspiration() {
+    const dailyRecipe = getDailyRecipe();
+    const today = new Date();
+
+    // Format date
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateString = today.toLocaleDateString('en-US', options);
+
+    // Update the DOM
+    document.getElementById('inspiration-date').textContent = dateString;
+    document.getElementById('daily-recipe-name').textContent = dailyRecipe.name;
+    document.getElementById('daily-recipe-description').textContent = dailyRecipe.description;
+
+    // Display ingredients
+    const ingredientsList = document.getElementById('daily-ingredients-list');
+    ingredientsList.innerHTML = '';
+
+    if (dailyRecipe.ingredients.length === 0) {
+        const li = document.createElement('li');
+        li.textContent = 'Just espresso!';
+        ingredientsList.appendChild(li);
+    } else {
+        dailyRecipe.ingredients.forEach(ing => {
+            const li = document.createElement('li');
+            const formattedIng = ing.split('-').map(word =>
+                word.charAt(0).toUpperCase() + word.slice(1)
+            ).join(' ');
+            li.textContent = formattedIng;
+            ingredientsList.appendChild(li);
+        });
+    }
+
+    // Display instructions (limit to first 3 for brevity)
+    const instructionsList = document.getElementById('daily-instructions-list');
+    instructionsList.innerHTML = '';
+
+    const instructionsToShow = dailyRecipe.instructions.slice(0, 3);
+    instructionsToShow.forEach(instruction => {
+        const li = document.createElement('li');
+        li.textContent = instruction;
+        instructionsList.appendChild(li);
+    });
+
+    // Add "..." if there are more instructions
+    if (dailyRecipe.instructions.length > 3) {
+        const li = document.createElement('li');
+        li.textContent = '...';
+        li.style.fontStyle = 'italic';
+        li.style.opacity = '0.8';
+        instructionsList.appendChild(li);
+    }
+}
+
+// Display daily inspiration on page load
+displayDailyInspiration();
