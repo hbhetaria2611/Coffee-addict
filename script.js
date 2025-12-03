@@ -417,8 +417,17 @@ const coffeeRecipes = [
 
 // Get selected ingredients
 function getSelectedIngredients() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-    return Array.from(checkboxes).map(cb => cb.value);
+    const selectors = document.querySelectorAll('.ingredient-selector');
+    const selected = [];
+
+    selectors.forEach(selector => {
+        const options = selector.selectedOptions;
+        Array.from(options).forEach(option => {
+            selected.push(option.value);
+        });
+    });
+
+    return selected;
 }
 
 // Calculate match score
@@ -521,8 +530,13 @@ function displayRecipes(recipes, selectedIngredients) {
 
 // Clear all selections
 function clearAll() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach(cb => cb.checked = false);
+    const selectors = document.querySelectorAll('.ingredient-selector');
+    selectors.forEach(selector => {
+        selector.selectedIndex = -1;
+        Array.from(selector.options).forEach(option => {
+            option.selected = false;
+        });
+    });
 
     const resultsSection = document.getElementById('results-section');
     resultsSection.style.display = 'none';
@@ -537,21 +551,4 @@ document.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         findRecipes();
     }
-});
-
-// Add some interactivity - auto-search when ingredients change (optional, can remove if too aggressive)
-let searchTimeout;
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-            const selectedCount = getSelectedIngredients().length;
-            if (selectedCount > 0) {
-                // Auto-find recipes after a brief delay when ingredients are selected
-                // Uncomment the line below for auto-search functionality
-                // findRecipes();
-            }
-        }, 500);
-    });
 });

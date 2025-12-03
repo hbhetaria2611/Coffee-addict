@@ -79,6 +79,47 @@ h3 {
     margin-bottom: 35px;
 }
 
+.helper-text {
+    font-size: 0.85rem;
+    color: var(--coffee-light);
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.ingredient-selector {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--cream);
+    border: 2px solid var(--coffee-light);
+    border-radius: 8px;
+    color: var(--coffee-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ingredient-selector:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.1);
+}
+
+.ingredient-selector option {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.ingredient-selector option:checked {
+    background: var(--accent) !important;
+    color: var(--foam) !important;
+}
+
+.ingredient-selector option:hover {
+    background: var(--coffee-light);
+    color: var(--foam);
+}
+
 .ingredient-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
