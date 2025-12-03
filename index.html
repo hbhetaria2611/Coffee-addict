@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Recipe Suggester - Espresso Edition</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>☕ Coffee Recipe Suggester</h1>
+            <p class="subtitle">Find inspiration for your next espresso creation</p>
+        </header>
+
+        <main>
+            <section class="ingredients-section">
+                <h2>What do you have available?</h2>
+
+                <div class="ingredient-category">
+                    <h3>🥛 Milk & Dairy</h3>
+                    <div class="ingredient-grid" id="milk-ingredients">
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="whole-milk">
+                            <span>Whole Milk</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="skim-milk">
+                            <span>Skim Milk</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="oat-milk">
+                            <span>Oat Milk</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="almond-milk">
+                            <span>Almond Milk</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="soy-milk">
+                            <span>Soy Milk</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="heavy-cream">
+                            <span>Heavy Cream</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="half-and-half">
+                            <span>Half & Half</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="condensed-milk">
+                            <span>Condensed Milk</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="ingredient-category">
+                    <h3>🍯 Syrups & Sweeteners</h3>
+                    <div class="ingredient-grid" id="syrup-ingredients">
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="vanilla-syrup">
+                            <span>Vanilla Syrup</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="caramel-syrup">
+                            <span>Caramel Syrup</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="hazelnut-syrup">
+                            <span>Hazelnut Syrup</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="chocolate-syrup">
+                            <span>Chocolate Syrup</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="white-chocolate-syrup">
+                            <span>White Chocolate Syrup</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="pumpkin-spice-syrup">
+                            <span>Pumpkin Spice Syrup</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="cinnamon-syrup">
+                            <span>Cinnamon Syrup</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="honey">
+                            <span>Honey</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="sugar">
+                            <span>Sugar</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="brown-sugar">
+                            <span>Brown Sugar</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="ingredient-category">
+                    <h3>🌿 Extras & Toppings</h3>
+                    <div class="ingredient-grid" id="extra-ingredients">
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="whipped-cream">
+                            <span>Whipped Cream</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="cocoa-powder">
+                            <span>Cocoa Powder</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="cinnamon">
+                            <span>Cinnamon</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="nutmeg">
+                            <span>Nutmeg</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="ice">
+                            <span>Ice</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="vanilla-extract">
+                            <span>Vanilla Extract</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="chocolate-chips">
+                            <span>Chocolate Chips</span>
+                        </label>
+                        <label class="ingredient-item">
+                            <input type="checkbox" value="caramel-sauce">
+                            <span>Caramel Sauce</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button id="find-recipes-btn" class="primary-btn">Find Coffee Recipes</button>
+                    <button id="clear-all-btn" class="secondary-btn">Clear All</button>
+                </div>
+            </section>
+
+            <section class="results-section" id="results-section" style="display: none;">
+                <h2>Your Coffee Inspirations</h2>
+                <div id="recipe-count" class="recipe-count"></div>
+                <div id="recipes-container" class="recipes-container"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Made with ❤️ for coffee lovers</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
